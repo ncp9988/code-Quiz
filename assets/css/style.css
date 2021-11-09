@@ -1,0 +1,28 @@
+header{
+    display: flex;
+
+}
+.score {
+    position:absolute;
+   top: 10px;;
+   left: 10px;
+   color: darkblue;
+}
+.timer {
+    position:absolute;
+   top:10px;
+   right:10px;
+}
+.content {
+    text-align: center;
+    margin-top: 10%;
+}
+.btn {
+  background: rgb(42, 42, 189);
+  font-size: 1.2rem;
+  border-radius: 10px;
+  position: relative;
+  top: -3px;
+  box-shadow: 0 3px rgb(51, 91, 104);
+  color: aliceblue;
+}
