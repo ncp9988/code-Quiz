@@ -12,15 +12,19 @@ answer1El.addEventListener("click", checkAnswer)
 answer2El.addEventListener("click", checkAnswer)
 answer3El.addEventListener("click", checkAnswer)
 answer4El.addEventListener("click", checkAnswer)
-var timeleft = 76;
+var timeleft = 40;
 
 var introEl = document.getElementById("intro")
 var scoreEl = document.getElementById("score")
 var checkAnswerEl = document.getElementById("check-answer")
+var resultEl = document.getElementById("result")
+resultEl.style.display = "none"
+
 
 document.getElementById("start").addEventListener("click", function () {
     questionContainerEl.style.display = "block"
     introEl.style.display = "none"
+    // resultEl.style.display = "none"
     renderQuestions()
 
     var downloadTimer = setInterval(function () {
@@ -112,33 +116,45 @@ function checkAnswer(event) {
     var userAnswer = this.getAttribute("data-value")
 
     if (userAnswer == myQuestions[Qno].correctAnswer) {
-        score += 10;
+        score = timeleft;
         console.log(score)
         checkAnswerEl.textContent = 'Correct'
 
     }
     else {
-        timeleft = timeleft - 10;
+        timeleft = timeleft - 10
+        score = timeleft
         console.log(score)
         checkAnswerEl.textContent = 'Incorrect'
 
     }
-    scoreEl.innerText = score
+    // scoreEl.textContent = score
     if (Qno < myQuestions.length - 1) {
         Qno++
         renderQuestions()
-    }else{
+
+    } else {
         saveUser()
     }
 }
-function saveUser () {
-    questionContainerEl.style.display = "none" 
-    
-}
-    // document.getElementById("result").addEventListener("click"),
-    // function showScores() {
+function saveUser() {
+    questionContainerEl.style.display = "none"
+    document.getElementById("time-running").textContent = timeleft
+    if (timeleft >= 0) {
+        scoreEl.style.display = "compact"
+        scoreEl.textContent = (score + ' points')
+        resultEl.style.display = "block"
+    }
 
-    // }
+    else
+    scoreEl.textContent = (score + ' points')
+    resultEl.style.display = "block"
+
+
+
+        ;
+}
+    
 
 
 
