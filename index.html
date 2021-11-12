@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="result">View high scores</nav>
+        <p class="timer">Time:<span id="time-running">0</span></p>
+
+    </header>
+    <section class="content">
+        <h1 class="page-title">Coding Quiz Challenge</h1>
+        <p>Try to answer the following code-related questions within the time limit.
+            <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+        </p>
+        <button id="start" class="btn">Start Quiz</button>
+        <div id="question-conatiner">
+            <h3 id="question">
+            </h3>
+        
+            <button data-value = "1" id="answer-1"></button>
+            <button data-value = "2" id="answer-2"></button>
+            <button data-value = "3" id="answer-3"></button>
+            <button data-value = "4" id="answer-4"></button>
+            
+        </div>
+
+    </section>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
