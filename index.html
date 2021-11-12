@@ -17,25 +17,31 @@
     </header>
     <section class="content">
         <main id="intro">
-        <h1 class="page-title">Coding Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit.
-            <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-        </p>
-        <button id="start" class="btn">Start Quiz</button>
+            <h1 class="page-title">Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit.
+                <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+            </p>
+            <button id="start" class="btn">Start Quiz</button>
         </main>
         <div id="question-container">
+            
             <h3 id="question">
             </h3>
-        
-            <button data-value = "1" id="answer-1"></button>
-            <button data-value = "2" id="answer-2"></button>
-            <button data-value = "3" id="answer-3"></button>
-            <button data-value = "4" id="answer-4"></button>
-            
-        </div
 
-    </section>
-    <script src="./assets/js/script.js"></script>
+            <button data-value="1" id="answer-1"></button>
+            <button data-value="2" id="answer-2"></button>
+            <button data-value="3" id="answer-3"></button>
+            <button data-value="4" id="answer-4"></button>
+            <h4 id="check-answer"></h4>
+
+        </div>
+        <div id="result">
+            <h6 id="score"></h6>
+            <input placeholder="enter user name"/>
+            
+        </div>
+     </section>
+        <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

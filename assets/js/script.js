@@ -1,5 +1,5 @@
-var questionContainerEl= document.getElementById("question-container")
-questionContainerEl.style.display="none"
+var questionContainerEl = document.getElementById("question-container")
+questionContainerEl.style.display = "none"
 
 var questionEl = document.getElementById("question")
 
@@ -15,12 +15,14 @@ answer4El.addEventListener("click", checkAnswer)
 var timeleft = 76;
 
 var introEl = document.getElementById("intro")
+var scoreEl = document.getElementById("score")
+var checkAnswerEl = document.getElementById("check-answer")
 
 document.getElementById("start").addEventListener("click", function () {
-    questionContainerEl.style.display="block"
-    introEl.style.display="none"
+    questionContainerEl.style.display = "block"
+    introEl.style.display = "none"
     renderQuestions()
-    
+
     var downloadTimer = setInterval(function () {
         timeleft--;
         document.getElementById("time-running").textContent = timeleft;
@@ -97,34 +99,45 @@ function renderQuestions() {
     // var answerButtonEl = document.createElement("button");
     // answerButtonEl.className = "answer";
     // questionContainerEl.appendChild(answerButtonEl);
-questionEl.textContent = myQuestions[Qno].question
-answer1El.textContent = myQuestions[Qno].answer.option1
-answer2El.textContent = myQuestions[Qno].answer.option2
-answer3El.textContent = myQuestions[Qno].answer.option3
-answer4El.textContent = myQuestions[Qno].answer.option4
+    questionEl.textContent = myQuestions[Qno].question
+    answer1El.textContent = myQuestions[Qno].answer.option1
+    answer2El.textContent = myQuestions[Qno].answer.option2
+    answer3El.textContent = myQuestions[Qno].answer.option3
+    answer4El.textContent = myQuestions[Qno].answer.option4
 };
 
-    function checkAnswer(event) {
-        event.preventDefault();
-            if (event.target.hasAttribute("answer")) {
-                
-                if (answer == myQuestions[questionIndex].correctAnswer) {
-                    score = timeleft;
-                    console.log(score)
+function checkAnswer(event) {
+    event.preventDefault();
 
-                }
-                else if (answer = myQuestions[questionIndex].correctAnswer) {
-                    timeleft = timeleft - 10;
-                    console.log(score)
+    var userAnswer = this.getAttribute("data-value")
 
-                }
-            }
+    if (userAnswer == myQuestions[Qno].correctAnswer) {
+        score += 10;
+        console.log(score)
+        checkAnswerEl.textContent = 'Correct'
 
-        }
+    }
+    else {
+        timeleft = timeleft - 10;
+        console.log(score)
+        checkAnswerEl.textContent = 'Incorrect'
+
+    }
+    scoreEl.innerText = score
+    if (Qno < myQuestions.length - 1) {
+        Qno++
+        renderQuestions()
+    }else{
+        saveUser()
+    }
+}
+function saveUser () {
+    questionContainerEl.style.display = "none" 
     
+}
     // document.getElementById("result").addEventListener("click"),
     // function showScores() {
-        
+
     // }
 
 
