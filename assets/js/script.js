@@ -8,13 +8,19 @@ var answer2El = document.getElementById("answer-2")
 var answer3El = document.getElementById("answer-3")
 var answer4El = document.getElementById("answer-4")
 
-answer1El.addEventListener.on("click", checkAnswer)
-answer2El.addEventListener.on("click", checkAnswer)
-answer3El.addEventListener.on("click", checkAnswer)
-answer4El.addEventListener.on("click", checkAnswer)
+answer1El.addEventListener("click", checkAnswer)
+answer2El.addEventListener("click", checkAnswer)
+answer3El.addEventListener("click", checkAnswer)
+answer4El.addEventListener("click", checkAnswer)
+var timeleft = 76;
+
+var introEl = document.getElementById("intro")
 
 document.getElementById("start").addEventListener("click", function () {
-    var timeleft = 76;
+    questionContainerEl.style.display="block"
+    introEl.style.display="none"
+    renderQuestions()
+    
     var downloadTimer = setInterval(function () {
         timeleft--;
         document.getElementById("time-running").textContent = timeleft;
@@ -96,18 +102,12 @@ answer1El.textContent = myQuestions[Qno].answer.option1
 answer2El.textContent = myQuestions[Qno].answer.option2
 answer3El.textContent = myQuestions[Qno].answer.option3
 answer4El.textContent = myQuestions[Qno].answer.option4
-answer5El.textContent = myQuestions[Qno].answer.option5
 };
 
-
-document.getElementById("start").addEventListener("click",
-    function checkAnswer(questionIndex) {
-        var myQuestions = document.getElementById("answers");
-
-
-        myQuestions.addEventListener("click", function (event) {
+    function checkAnswer(event) {
+        event.preventDefault();
             if (event.target.hasAttribute("answer")) {
-                event.preventDefault;
+                
                 if (answer == myQuestions[questionIndex].correctAnswer) {
                     score = timeleft;
                     console.log(score)
@@ -120,12 +120,12 @@ document.getElementById("start").addEventListener("click",
                 }
             }
 
-        });
-    })
-    document.getElementById("result").addEventListener("click"),
-    function showScores() {
+        }
+    
+    // document.getElementById("result").addEventListener("click"),
+    // function showScores() {
         
-    }
+    // }
 
 
 
