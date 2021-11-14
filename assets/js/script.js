@@ -20,6 +20,9 @@ var checkAnswerEl = document.getElementById("check-answer")
 var resultEl = document.getElementById("result")
 resultEl.style.display = "none"
 
+var textInput = document.getElementById("name")
+var historyEl = document.getElementById("history")
+historyEl.style.display = "none"
 
 document.getElementById("start").addEventListener("click", function () {
     questionContainerEl.style.display = "block"
@@ -89,20 +92,6 @@ var myQuestions = [
 ];
 
 function renderQuestions() {
-    // create container to hold questions and answers
-    // var questionContainerEl = document.createElement("div");
-    // questionContainerEl.className = "container";
-
-    // // create question 
-    // var myQuestionsEl = document.createElement("question");
-    // myQuestionsEl.className = "question";
-    // questionContainerEl.appendChild(myQuestionsEl);
-
-
-    // // create answer button
-    // var answerButtonEl = document.createElement("button");
-    // answerButtonEl.className = "answer";
-    // questionContainerEl.appendChild(answerButtonEl);
     questionEl.textContent = myQuestions[Qno].question
     answer1El.textContent = myQuestions[Qno].answer.option1
     answer2El.textContent = myQuestions[Qno].answer.option2
@@ -135,6 +124,7 @@ function checkAnswer(event) {
 
     } else {
         saveUser()
+        saveScore()
     }
 }
 function saveUser() {
@@ -142,19 +132,56 @@ function saveUser() {
     document.getElementById("time-running").textContent = timeleft
     if (timeleft >= 0) {
         scoreEl.style.display = "compact"
-        scoreEl.textContent = (score + ' points')
+        scoreEl.textContent = ('Your final score is ' + score + ' points')
         resultEl.style.display = "block"
     }
 
     else
-    scoreEl.textContent = (score + ' points')
-    resultEl.style.display = "block"
-
-
-
-        ;
+        scoreEl.textContent = ('Your final score is ' + score + ' points')
+    resultEl.style.display = "block";
 }
+
+var nameBtn = document.querySelector("#name-btn");
+var nameEl = document.querySelector("#name")
+
+var getUserName = function (event) {
+    event.preventDefault();
+    var textInput = document.querySelector("input[name='name']").value;
+    saveScore()
+    console.dir(textInput);
+    if (!textInput) {
+        alert("You need to enter your name!")
+        return false;
+    }
     
+};
+
+var saveScore = function () {
+
+    const user = {
+        name: textInput.textContent,
+        score: timeleft,
+    }
+    localStorage.setItem("name", JSON.stringify(user));
+}
+
+
+
+nameBtn.addEventListener("click", function highScores() {
+
+    resultEl.style.display = "none"
+    historyEl.style.display = "inline"
+    var nameList = document.getElementById("name-list")
+    nameList.textContent = (nameEl + scoreEl)
+saveScore ();
+
+})
+
+
+
+
+
+
 
 
 
