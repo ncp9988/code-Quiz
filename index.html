@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <nav class="result">View high scores</nav>
+        <nav class="result" id="high-score" >View high scores</nav>
         <p class="timer">Time:<span id="time-running"> 0</span></p>
 
     </header>
@@ -37,15 +37,15 @@
         </div>
         <div id="result">
             <h5 id="score"></h5>
-            <input class="name" id="name" name="name" type="text" placeholder="Enter user name" required/>
+            <input class="name" id="name" name="name" type="text" placeholder="Enter user name"/>
             <button id="name-btn" class="name-btn">Submit</button>
             
         </div>
         <div id="history">
             <h3 id="score-list">High Scores</h3>
             <div id="name-list"></div>
-            <button id="back">Go back</button>
-            <button id="clear">Clear high Scores</button>
+            <button id="back-btn">Go back</button>
+            <button id="clear-btn">Clear high Scores</button>
     
 
         </div>

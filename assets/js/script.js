@@ -1,3 +1,4 @@
+
 var questionContainerEl = document.getElementById("question-container")
 questionContainerEl.style.display = "none"
 
@@ -12,7 +13,7 @@ answer1El.addEventListener("click", checkAnswer)
 answer2El.addEventListener("click", checkAnswer)
 answer3El.addEventListener("click", checkAnswer)
 answer4El.addEventListener("click", checkAnswer)
-var timeleft = 40;
+var timeleft = 76;
 
 var introEl = document.getElementById("intro")
 var scoreEl = document.getElementById("score")
@@ -24,13 +25,14 @@ var textInput = document.getElementById("name")
 var historyEl = document.getElementById("history")
 historyEl.style.display = "none"
 
-document.getElementById("start").addEventListener("click", function () {
+
+document.getElementById("start").addEventListener("click", function() {
     questionContainerEl.style.display = "block"
     introEl.style.display = "none"
     // resultEl.style.display = "none"
     renderQuestions()
 
-    var downloadTimer = setInterval(function () {
+    var downloadTimer = setInterval(function() {
         timeleft--;
         document.getElementById("time-running").textContent = timeleft;
         if (timeleft <= 0)
@@ -124,7 +126,7 @@ function checkAnswer(event) {
 
     } else {
         saveUser()
-        saveScore()
+        // saveScore()
     }
 }
 function saveUser() {
@@ -146,23 +148,24 @@ var nameEl = document.querySelector("#name")
 
 var getUserName = function (event) {
     event.preventDefault();
-    var textInput = document.querySelector("input[name='name']").value;
-    saveScore()
+    var textInput = document.querySelector("input[name='name']");
     console.dir(textInput);
     if (!textInput) {
         alert("You need to enter your name!")
         return false;
     }
-    
 };
 
 var saveScore = function () {
-
+    var textInput = document.querySelector("input[name='name']");
+    console.log(textInput)
     const user = {
-        name: textInput.textContent,
-        score: timeleft,
+        name: [textInput.value],
+        score: [timeleft],
     }
     localStorage.setItem("name", JSON.stringify(user));
+    console.log('calling saveScore')
+    console.log(textInput.value)
 }
 
 
@@ -171,11 +174,31 @@ nameBtn.addEventListener("click", function highScores() {
 
     resultEl.style.display = "none"
     historyEl.style.display = "inline"
-    var nameList = document.getElementById("name-list")
-    nameList.textContent = (nameEl + scoreEl)
-saveScore ();
+    var nameList = document.getElementById("#name-list")
+ nameList.textContent = (textInput.value + score)
+saveScore();
 
 })
+var highScores =document.querySelector("#high-score")
+highScores.addEventListener("click",function(loadScores) {
+    var saveScore = loadScores.getItem("user");
+    saveScore = JSON.parse(saveScore);
+
+})
+
+var backBtn= document.querySelector("#back-btn")
+backBtn.addEventListener("click",function (){
+    reset();
+})
+
+var clearBtn= document.querySelector("#clear-btn")
+clearBtn.addEventListener("click",function(){
+    localStorage.clear()
+    console.log("Clear history")
+})
+
+
+
 
 
 
