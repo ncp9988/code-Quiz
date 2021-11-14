@@ -23,16 +23,17 @@ resultEl.style.display = "none"
 
 var textInput = document.getElementById("name")
 var historyEl = document.getElementById("history")
+var nameList = document.getElementById("#name-list")
 historyEl.style.display = "none"
 
 
-document.getElementById("start").addEventListener("click", function() {
+document.getElementById("start").addEventListener("click", function running() {
     questionContainerEl.style.display = "block"
     introEl.style.display = "none"
     // resultEl.style.display = "none"
     renderQuestions()
 
-    var downloadTimer = setInterval(function() {
+    var downloadTimer = setInterval(function () {
         timeleft--;
         document.getElementById("time-running").textContent = timeleft;
         if (timeleft <= 0)
@@ -159,11 +160,11 @@ var getUserName = function (event) {
 var saveScore = function () {
     var textInput = document.querySelector("input[name='name']");
     console.log(textInput)
-    const user = {
-        name: [textInput.value],
-        score: [timeleft],
-    }
-    localStorage.setItem("name", JSON.stringify(user));
+    const user = [{
+        name: textInput.value,
+        score: timeleft,
+    }]
+    localStorage.setItem("name", JSON.stringify(user[0]));
     console.log('calling saveScore')
     console.log(textInput.value)
 }
@@ -174,25 +175,24 @@ nameBtn.addEventListener("click", function highScores() {
 
     resultEl.style.display = "none"
     historyEl.style.display = "inline"
-    var nameList = document.getElementById("#name-list")
- nameList.textContent = (textInput.value + score)
-saveScore();
+    nameList.textContent = ("Your score is " + score + "points")
+    saveScore();
 
 })
-var highScores =document.querySelector("#high-score")
-highScores.addEventListener("click",function(loadScores) {
+var highScores = document.querySelector("#high-score")
+highScores.addEventListener("click", function (loadScores) {
     var saveScore = loadScores.getItem("user");
     saveScore = JSON.parse(saveScore);
 
 })
 
-var backBtn= document.querySelector("#back-btn")
-backBtn.addEventListener("click",function (){
-    reset();
+var backBtn = document.querySelector("#back-btn")
+backBtn.addEventListener("click", function () {
+    running();
 })
 
-var clearBtn= document.querySelector("#clear-btn")
-clearBtn.addEventListener("click",function(){
+var clearBtn = document.querySelector("#clear-btn")
+clearBtn.addEventListener("click", function () {
     localStorage.clear()
     console.log("Clear history")
 })
