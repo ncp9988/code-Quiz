@@ -39,7 +39,7 @@ document.getElementById("start").addEventListener("click", function running() {
         if (timeleft <= 0)
             clearInterval(downloadTimer);
     }, 1000);
-})
+});
 var Qno = 0
 var myQuestions = [
     {
@@ -157,6 +157,7 @@ var getUserName = function (event) {
     }
 };
 
+
 var saveScore = function () {
     var textInput = document.querySelector("input[name='name']");
     console.log(textInput)
@@ -170,12 +171,11 @@ var saveScore = function () {
 }
 
 
-
 nameBtn.addEventListener("click", function highScores() {
 
     resultEl.style.display = "none"
     historyEl.style.display = "inline"
-    nameList.textContent = ("Your score is " + score + "points")
+    // nameList.textContent = ("Your score is " + score + "points")
     saveScore();
 
 })
@@ -186,9 +186,13 @@ highScores.addEventListener("click", function (loadScores) {
 
 })
 
+
 var backBtn = document.querySelector("#back-btn")
 backBtn.addEventListener("click", function () {
-    running();
+    questionContainerEl.style.display = "impact" 
+
+    renderQuestions();
+
 })
 
 var clearBtn = document.querySelector("#clear-btn")
