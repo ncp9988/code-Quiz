@@ -13,7 +13,7 @@ Homework Assignment #4
 ### Develop 
 by Shelby
 
-![Screenshot].
+![Screenshot]https://github.com/ncp9988/code-Quiz/blob/main/assets/image/Screen%20Shot%202021-11-21%20at%201.26.06%20PM.png
 
 ### Deployed link 
  https://ncp9988.github.io/code-Quiz/
