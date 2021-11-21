@@ -22,9 +22,9 @@ var resultEl = document.getElementById("result")
 resultEl.style.display = "none"
 
 var textInput = document.getElementById("name")
-var historyEl = document.getElementById("history")
-var nameList = document.getElementById("#name-list")
-historyEl.style.display = "none"
+// var historyEl = document.getElementById("history")
+// var nameList = document.getElementById("#name-list")
+// historyEl.style.display = "none"
 
 
 document.getElementById("start").addEventListener("click", function running() {
@@ -149,57 +149,57 @@ var nameEl = document.querySelector("#name")
 
 var getUserName = function (event) {
     event.preventDefault();
-    var textInput = document.querySelector("input[name='name']");
-    console.dir(textInput);
+    var textInput = nameEl.value;
+    console.log(textInput);
     if (!textInput) {
         alert("You need to enter your name!")
         return false;
+    }else{
+        var scoreList = JSON.parse(localStorage.getItem("codequiz")) || []
+       scoreList.push({
+           user:textInput,
+           score:score
+       })
+       localStorage.setItem("codequiz",JSON.stringify(scoreList))
+       resultEl.innerHTML = `
+       <div class="cainter">
+       <h1> Your score is saved!</h1>
+       <h3><a href="highscores.html">Check All Scores</a></h3>`
     }
+
 };
+nameBtn.addEventListener("click",getUserName)
 
 
-var saveScore = function () {
-    var textInput = document.querySelector("input[name='name']");
-    console.log(textInput)
-    const user = [{
-        name: textInput.value,
-        score: timeleft,
-    }]
-    localStorage.setItem("name", JSON.stringify(user[0]));
-    console.log('calling saveScore')
-    console.log(textInput.value)
-}
+// nameBtn.addEventListener("click", function highScores() {
 
+//     resultEl.style.display = "none"
+//     historyEl.style.display = "inline"
+//     // nameList.textContent = ("Your score is " + score + "points")
+//     saveScore();
 
-nameBtn.addEventListener("click", function highScores() {
-
-    resultEl.style.display = "none"
-    historyEl.style.display = "inline"
-    // nameList.textContent = ("Your score is " + score + "points")
-    saveScore();
-
-})
+// })
 var highScores = document.querySelector("#high-score")
 highScores.addEventListener("click", function (loadScores) {
-    var saveScore = loadScores.getItem("user");
+    var saveScore = loadScores.getItem("scoreList");
     saveScore = JSON.parse(saveScore);
 
 })
 
 
-var backBtn = document.querySelector("#back-btn")
-backBtn.addEventListener("click", function () {
-    questionContainerEl.style.display = "impact" 
+// var backBtn = document.querySelector("#back-btn")
+// backBtn.addEventListener("click", function () {
+//     questionContainerEl.style.display = "impact" 
 
-    renderQuestions();
+//     renderQuestions();
 
-})
+// })
 
-var clearBtn = document.querySelector("#clear-btn")
-clearBtn.addEventListener("click", function () {
-    localStorage.clear()
-    console.log("Clear history")
-})
+// var clearBtn = document.querySelector("#clear-btn")
+// clearBtn.addEventListener("click", function () {
+//     localStorage.clear()
+//     console.log("Clear history")
+// })
 
 
 
