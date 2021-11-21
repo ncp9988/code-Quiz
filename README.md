@@ -17,4 +17,6 @@ by Shelby
 
 ### Deployed link 
  https://ncp9988.github.io/code-Quiz/
- 
+
+### GitHub
+https://github.com/ncp9988/code-Quiz.git
