@@ -1,3 +1,7 @@
+
+.content {
+  background-color: aliceblue;
+}
 .result {
 
     position:absolute;
@@ -15,11 +19,21 @@
     margin-top: 10%;
 }
 .btn {
-  background: rgb(42, 42, 189);
+  background: rgb(77, 122, 173);
   font-size: 1.2rem;
   border-radius: 10px;
   position: relative;
   top: -3px;
   box-shadow: 0 3px rgb(51, 91, 104);
   color: aliceblue;
+}
+.btnn {
+  border-left: 1px solid black;
+  border-radius: 10px;
+  background-color: #06AED5;
+  color: white;
+}
+#name-list {
+  padding: 10px;
+  float: inline-start;
 }

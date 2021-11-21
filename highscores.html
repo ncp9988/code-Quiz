@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scores for Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <section class="content">
+        <header>
+            <h1>Quiz Scores</h1>
+        </header>
+        <div id="history">
+            <h3 id="list">High Scores</h3>
+            <div id="score-list"></div>
+            <div id="name-list"><div>
+        </div>
+        <a href="index.html">Do it Again</a>
+    </section>
+    <script>
+
+        var scoreListEl = document.querySelector("#score-list");
+        var scoreList = JSON.parse(localStorage.getItem("codequiz")) || []
+        // var saveScore = function () {
+        //     var textInput = document.querySelector("input[name='name']");
+        //     console.log(textInput)
+        //     let init = nameInput.value.toUpperCase();
+        //     scoreList.push({ name: init, score: timeleft });
+        //     scoreList = scoreList.sort((a, b) => {
+        //         if (a.score < b.score) {
+        //           return 1;
+        //         } else {
+        //           return -1;
+        //         }
+        //       });
+        scoreListEl.innerHTML = "";
+        for (let i = 0; i < scoreList.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = `${scoreList[i].user}: ${scoreList[i].score}`;
+            scoreListEl.append(li);
+        }
+        // localStorage.setItem("name", JSON.stringify(user));
+        console.log('calling saveScore')
+    // console.log(textInput.value)
+// }
+
+    </script>
+</body>
+
+</html>

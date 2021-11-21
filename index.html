@@ -11,7 +11,8 @@
 
 <body>
     <header>
-        <nav class="result" id="high-score" >View high scores</nav>
+        <a href="highscores.html"> <button class="result" id="high-score">View high scores</button> </a>
+
         <p class="timer">Time:<span id="time-running"> 0</span></p>
 
     </header>
@@ -24,35 +25,28 @@
             <button id="start" class="btn">Start Quiz</button>
         </main>
         <div id="question-container">
-            
+
             <h3 id="question">
             </h3>
 
-            <button data-value="1" id="answer-1"></button>
-            <button data-value="2" id="answer-2"></button>
-            <button data-value="3" id="answer-3"></button>
-            <button data-value="4" id="answer-4"></button>
+            <button data-value="1" class="btnn" id="answer-1"></button>
+            <button data-value="2" class="btnn" id="answer-2"></button>
+            <button data-value="3" class="btnn" id="answer-3"></button>
+            <button data-value="4" class="btnn" id="answer-4"></button>
             <h4 id="check-answer"></h4>
 
         </div>
         <div id="result">
             <h5 id="score"></h5>
             <p>
-            <input class="name" id="name" name="name" type="text" placeholder="Enter user name"/>
-            <button id="name-btn" class="name-btn">Submit</button>
+                <input class="name" id="name" name="name" type="text" placeholder="Enter user name" />
+                <button id="name-btn" class="btn" class="name-btn">Submit</button>
             </p>
-            
-        </div>
-        <div id="history">
-            <h3 id="score-list">High Scores</h3>
-            <div id="name-list"></div>
-            <button id="back-btn">Go back</button>
-            <button id="clear-btn">Clear high Scores</button>
-    
 
         </div>
-     </section>
-        <script src="./assets/js/script.js"></script>
+
+    </section>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
